@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.product_div:hover .product_show_btn{
+    display: flex;
+    flex-direction: column;
+    column-gap:22px ;
+    transition:0.8s all;
+    
+}
+.navbar{
+    height: 56px;
+}
+.login_div{
+    height: calc(100%-56px);
+
+}
+
+:root {
+  --background-color: white;
+  --primary-text-color: black;
+  --secondary-text-color: rgb(153, 156, 162);
+  --primary-btn-bgcolor:rgb(55, 63, 85);
+  --primary-btn-color:white;
+  --form-bg-color:rgb(44, 184, 239);
+  --form-text-color:black;
+  --hero-bg-color:blue;
+ 
+
+
+  }
+
+  [data-theme="dark"] {
+    --background-color: #111c1e;
+    --primary-text-color: white;
+    --secondary-text-color: rgb(107,114,128);
+    --primary-btn-bgcolor:rgb(11, 146, 196);
+    --primary-btn-color:white;
+    --form-bg-color:#273444;
+    --form-text-color:white;
+    --hero-bg-color:green;
+  }
+
+
+
+  .main_div{
+    background-color:var(--background-color);
+    color:var(--primary-text-color)
+
+  }
+  .main_heading{
+    color: var(--secondary-text-color);
+  }
+
+  .dashboard_btn{
+      background-color:var(--primary-btn-bgcolor) ;
+      color:var(--primary-btn-color)
+  }
+  .form{
+    background-color: var(--form-bg-color);
+    color: var(--form-text-color);
+  }
+
+  .hero_bg{
+    background-color: var(--hero-bg-color);
+  }
+
+  
