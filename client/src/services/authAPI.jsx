@@ -16,7 +16,7 @@ export function sendOtp(Email,navigate){
 
     try {
       
-          const response = await axios.post(`${URL}/sendotp`, {Email})
+          const response = await axios.post(`${URL}/auth/sendotp`, {Email})
        
           if (!response.data.success) {
             throw new Error(response.data.message)
@@ -40,7 +40,7 @@ export function signUp( Name,Email,Phone,Password,otp,City,State,Gender,hearAbou
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
-      const response = await axios.post(`${URL}/signup`, {
+      const response = await axios.post(`${URL}/auth/signup`, {
         Name,
         Email,
         Phone,
@@ -75,8 +75,8 @@ export function signUp( Name,Email,Phone,Password,otp,City,State,Gender,hearAbou
 export function login(data,navigate){
   return async (dispatch)=>{
     try {
-      axios.post(`${URL}/login`,data).then((response)=>{
-        (response)
+      axios.post(`${URL}/auth/login`,data).then((response)=>{
+       console.log(response)
         dispatch(setUser(response.data.user))
         dispatch(setToken(response.data.token))
   
@@ -113,7 +113,7 @@ export function logout(navigate){
 export function forgotPassword(email,navigate){
   return async (dispatch)=>{
         try {
-          const response =await axios.post(`${URL}/reset-password-token`,{email})
+          const response =await axios.post(`${URL}/auth/reset-password-token`,{email})
           if(!response.data.success){
               throw new Error(response.data.message)
           }
@@ -133,7 +133,7 @@ export function forgotPassword(email,navigate){
 
 export async function ResetPassword(Password,Confirm_Password,Email,navigate){
   try {
-    const response =await axios.post(`${URL}/reset-password`,{Password,Confirm_Password,Email});
+    const response =await axios.post(`${URL}/auth/reset-password`,{Password,Confirm_Password,Email});
     if(!response.data.success){
       throw new Error(response.data.message)
    }

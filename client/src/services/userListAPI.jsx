@@ -8,7 +8,7 @@ console.log(URL)
 export function getUserList(token){
     
    return async(dispatch)=>{
-       await axios.get(`${URL}/getuserlisting`,{
+       await axios.get(`${URL}/listing/getuserlisting`,{
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -30,7 +30,7 @@ export function getUserList(token){
 
 export async function createUser(data,navigate,token){
     try {
-        const response = await axios.post(`${URL}/createUser`,data,{
+        const response = await axios.post(`${URL}/listing/createUser`,data,{
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -53,7 +53,7 @@ export async function editUser(formData,id,navigate,token){
     try {
   
 
-    const response = await axios.put(`${URL}/edituser/${id}`,  formData , {
+    const response = await axios.put(`${URL}/listing/edituser/${id}`,  formData , {
         headers: {
             Authorization: `Bearer ${token}`,
              'Content-Type': 'multipart/form-data',
@@ -77,7 +77,7 @@ export async function editUser(formData,id,navigate,token){
 export async function deleteUser(userId,navigate,token){
     try {
        
-        const response = await axios.delete(`${URL}/deleteuser/${userId}`,{
+        const response = await axios.delete(`${URL}/listing/deleteuser/${userId}`,{
             headers: {
                 Authorization: `Bearer ${token}`,
             },
