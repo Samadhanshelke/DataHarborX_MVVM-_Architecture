@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 
 const URL = import.meta.env.VITE_BACKEND_URL
-
+console.log(URL)
 export function getUserList(token){
     
    return async(dispatch)=>{

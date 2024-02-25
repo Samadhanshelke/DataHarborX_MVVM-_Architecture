@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 
 
 const URL = import.meta.env.VITE_BACKEND_URL
+console.log(URL)
+
 // sendotp function
 export function sendOtp(Email,navigate){
    return async (dispatch)=>{
