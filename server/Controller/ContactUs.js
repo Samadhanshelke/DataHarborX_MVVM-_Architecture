@@ -3,7 +3,7 @@ const {mailSender} = require("../utils/mailSender")
 const {contactUsEmail}= require("../mail/template/ContactFormRes");
 exports.contactUs = async (req,res)=>{
     try {
-        console.log("contactus",req.body)
+     
         const {Email,Message,Subject,Phone} = req.body;
         const SentMail = await mailSender(
             Email,
@@ -19,7 +19,7 @@ exports.contactUs = async (req,res)=>{
 
         
     } catch (error) {
-        console.log(error)
+    
         res.status(400).json({
             success:false,
             message:"error occured in contact section"

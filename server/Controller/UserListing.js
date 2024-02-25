@@ -30,7 +30,7 @@ exports.createUser = async(req,res)=>{
         const firstname = UserName.split(" ")[0]
         const lastname = UserName.split(" ")[1]
         const image = `https://ui-avatars.com/api/?name=${firstname}+${lastname}?background=9E0047&color=9E0047`
-        console.log(image)
+   
         const data = {
             UserName,
             Email,
@@ -39,7 +39,7 @@ exports.createUser = async(req,res)=>{
         }
         const newUser = await UserListing.create(data)
       
-        console.log(newUser)
+    
         return res.json({
             success:true,
             message:"created successfully",
@@ -56,12 +56,12 @@ exports.createUser = async(req,res)=>{
 
 exports.updateUser = async(req,res)=>{
     try {
-        console.log("updateuser_Req_body", req.body)
+     
         const {UserName,Email,Phone} = req.body;
         const {id} = req.params
         const imageName = req.file ? req.file.filename : undefined;
      
-        console.log("req_body",req.body)
+  
         if(!UserName || !Email || !Phone || !id){
             return res.json({
                 success:false,
@@ -84,7 +84,7 @@ exports.updateUser = async(req,res)=>{
             updateFields,
             { new: true }
           );
-         console.log('updateduser',updatedUser)
+   
 
         return res.json({
             success:true,
@@ -106,7 +106,7 @@ exports.deleteUser = async(req,res)=>{
     try {
         // const {userId} = req.body; 
         const userId = req.params.userId;
-        console.log("reqbody",userId)
+  
        
         if(!userId){
             return res.json({

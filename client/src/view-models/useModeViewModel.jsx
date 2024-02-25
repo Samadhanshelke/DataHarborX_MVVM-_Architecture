@@ -10,7 +10,7 @@ const useModeViewModel = ()=>{
     const [modal,setModal] = useState(false)
 
     const handleSelectedTheme = (theme)=> {
-        console.log(mode)
+     
         dispatch(setMode(theme))
        
       }

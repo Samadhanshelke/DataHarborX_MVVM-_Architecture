@@ -11,7 +11,7 @@ dotenv.config();
 exports.SendOtp = async(req,res)=>{
     try {
         // fetch email from req body
-        console.log("req body",req.body)
+    
         const { Email } = req.body;
         //check if user already exists
         const checkUserPresent = await User.findOne({ Email });
@@ -64,8 +64,7 @@ exports.signUp = async(req,res)=>{
      try {
        
        const {Name,Email,Password,Phone,otp,City,State,Gender,hearAbout} = req.body;
-       console.log(req.body)
-       console.log("in signup function", Name,Email,Phone,Password,otp,City,State,Gender,hearAbout)
+    
      if(!Name || !Email || !Password || !Phone || !otp || !City || !State || !Gender || !hearAbout){
        return res.status(400).json({
             success:false,
@@ -73,7 +72,7 @@ exports.signUp = async(req,res)=>{
         })
      }
      const UserExist = await User.findOne({Email});
-     console.log(UserExist)
+  
      if(UserExist){
        return res.status(400).json({
             success:false,
@@ -146,7 +145,7 @@ exports.login = async(req,res)=>{
     }
      
     if(await bcrypt.compare(Password,user.Password)){
-       console.log(user.Email,user._id)
+   
         const payload = {
             Email: user.Email,
             id: user._id
@@ -193,7 +192,7 @@ exports.ResetPasswordToken = async(req,res)=>{
   try {
     const {email} = req.body;
     const uuid =  crypto.randomUUID()
-    console.log(uuid)
+
     const userExists = await User.findOne({Email:email})
     if(!userExists){
       return res.json({
@@ -222,7 +221,7 @@ exports.ResetPasswordToken = async(req,res)=>{
 exports.ResetPassword = async(req,res)=>{
   try {
     const {Password,Confirm_Password,Email} = req.body;
-    console.log(req.body)
+ 
     if(!Password || !Confirm_Password || !Email){
       return res.json({
         success:false,
@@ -237,9 +236,9 @@ exports.ResetPassword = async(req,res)=>{
       })
     }
     const hashedPassword = await bcrypt.hash(Password,10)
-    console.log(hashedPassword)
+ 
     const user =await User.findOneAndUpdate({Email:Email},{Password:hashedPassword},{new:true})
-    console.log(user)
+ 
     return res.json({
       success:true,
       message:"password changed successfully",

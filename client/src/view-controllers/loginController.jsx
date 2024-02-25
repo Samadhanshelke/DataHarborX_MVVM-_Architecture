@@ -8,7 +8,13 @@ const useLoginController = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+   
+      Email: "test@gmail.com",
+      Password: 'Pass@123',
+    },
+  });
 
   const onSubmit = (data) => {
     const { Email, Password } = data;

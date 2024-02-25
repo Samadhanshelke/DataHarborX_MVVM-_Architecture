@@ -19,8 +19,6 @@ const {
   const { UserName, Email, Phone, Image } = 
     prevalues.length === 0 ? currentValues : prevalues[0];
 
-    console.log("prevalues",prevalues)
-    console.log("currentValues",currentValues)
 
   const {
     register,

@@ -32,7 +32,7 @@ const handleDeleteUser = async (userId) => {
 };
 
 useEffect(() => {
-  console.log("this code is running")
+
   dispatch(getUserList(token));
 }, [dispatch, token]);
 

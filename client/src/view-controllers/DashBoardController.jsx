@@ -74,7 +74,7 @@ const {
 
 
   const openModal = () => {
-    console.log("modealopen")
+
     setIsModalOpen(true);
   };
 
@@ -120,7 +120,7 @@ const {
   const handleSaveAsPDF = (onDownloadPDF) => {
     // Create a new jsPDF instance
     const pdf = new jsPDF();
-    console.log('printing')
+ 
     // Add content to the PDF
     pdf.text('My Table Data', 10, 10); // Title
     pdf.autoTable({

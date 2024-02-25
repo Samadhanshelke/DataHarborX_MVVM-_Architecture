@@ -3,18 +3,18 @@ import axios from "axios"
 import {setUser} from '../slices/profileSlice';
 import {setLoading, setToken, setUuid} from '../slices/authSlice'
 import toast from "react-hot-toast";
-// const URL ="https://dataharborx.onrender.com"
+
 const URL ="http://localhost:3001/api/auth"
 // sendotp function
 export function sendOtp(Email,navigate){
    return async (dispatch)=>{
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
-    console.log("email", Email)
+
     try {
       
           const response = await axios.post(`${URL}/sendotp`, {Email})
-          console.log(response)
+       
           if (!response.data.success) {
             throw new Error(response.data.message)
           }
@@ -35,7 +35,6 @@ export function sendOtp(Email,navigate){
 export function signUp( Name,Email,Phone,Password,otp,City,State,Gender,hearAbout,navigate){
   return async(dispatch)=>{
     const toastId = toast.loading("Loading...")
-    console.log("in signup function", Name,Email,Phone,Password,otp,City,State,Gender,hearAbout)
     dispatch(setLoading(true))
     try {
       const response = await axios.post(`${URL}/signup`, {
@@ -74,7 +73,7 @@ export function login(data,navigate){
   return async (dispatch)=>{
     try {
       axios.post(`${URL}/login`,data).then((response)=>{
-        console.log(response)
+        (response)
         dispatch(setUser(response.data.user))
         dispatch(setToken(response.data.token))
   
@@ -87,7 +86,7 @@ export function login(data,navigate){
       })
     } catch (error) {
       toast.error('invalid credential')
-      console.log(error)
+      
     }
    
 
@@ -115,14 +114,14 @@ export function forgotPassword(email,navigate){
           if(!response.data.success){
               throw new Error(response.data.message)
           }
-          console.log(response);
+      
           dispatch(setUuid(response.data.uuid))
           localStorage.setItem('uuid',JSON.stringify(response.data.uuid))
           toast.success("please check Email")
           navigate('/')
       
         } catch (error) {
-          console.log(error)
+          toast.error("server error")
         }
 
   }
@@ -135,11 +134,12 @@ export async function ResetPassword(Password,Confirm_Password,Email,navigate){
     if(!response.data.success){
       throw new Error(response.data.message)
    }
-   console.log(response);
+
    toast.success("Password Changed Successfully,Please login")
    navigate('/login')
   } catch (error) {
-    console.log(error)
+    toast.error("Please try again later")
+
   }
 
 }
