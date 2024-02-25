@@ -21,7 +21,9 @@ app.use(cors({
 
 
 
-
+app.get("/test",(req,res)=>{
+    res.send("running")
+})
 app.use("/api/auth",AuthRoutes)
 
 app.use("/api/listing",UserListingRoutes)
