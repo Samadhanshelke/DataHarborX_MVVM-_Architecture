@@ -4,7 +4,8 @@ import {setUser} from '../slices/profileSlice';
 import {setLoading, setToken, setUuid} from '../slices/authSlice'
 import toast from "react-hot-toast";
 
-const URL ="http://localhost:3001/api/auth"
+
+const URL = import.meta.env.VITE_BACKEND_URL
 // sendotp function
 export function sendOtp(Email,navigate){
    return async (dispatch)=>{

@@ -3,7 +3,8 @@ import {setUserList} from '../slices/userListingSlice'
 import toast from "react-hot-toast";
 
 
-const URL = 'http://localhost:3001/api/listing'
+const URL = import.meta.env.VITE_BACKEND_URL
+
 export function getUserList(token){
     
    return async(dispatch)=>{
@@ -19,8 +20,8 @@ export function getUserList(token){
                
            
 
-       }).catch(()=>{
-       toast.error("something went wrong")
+       }).catch((err)=>{
+          console.log(err)
        })
 
 
